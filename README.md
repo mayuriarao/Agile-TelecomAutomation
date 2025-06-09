@@ -32,19 +32,6 @@ https://thinking-tester-contact-list.herokuapp.com
 
 ---
 
-## 🛠️ Tech Stack
-
-| Tool           | Purpose              |
-|----------------|----------------------|
-| Java           | Core language        |
-| RestAssured    | API Testing          |
-| TestNG         | Test orchestration   |
-| ExtentReports  | HTML Reporting       |
-| Postman        | Manual & Chai tests  |
-| Maven          | Dependency management|
-
----
-
 ## How to Run
 
 ### ✅ Using IntelliJ or Eclipse
