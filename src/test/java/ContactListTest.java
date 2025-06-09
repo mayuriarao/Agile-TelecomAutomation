@@ -59,7 +59,7 @@ public class ContactListTest {
         test = extent.createTest("2. Get User Profile");
 
         Response res = RestAssured.given()
-                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX +" " + token)
+                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX+token)
                 .get(baseUrl + "/users/me");
 
         if (res.getStatusCode() == HttpStatus.SC_OK) {
@@ -85,10 +85,12 @@ public class ContactListTest {
         """, APIConstants.KEY_FIRST_NAME, APIConstants.KEY_LAST_NAME, APIConstants.KEY_EMAIL, APIConstants.KEY_PASSWORD);
 
         Response res = RestAssured.given()
-                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX +" "+ token)
+                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX + token)
                 .header(APIConstants.HEADER_CONTENT_TYPE, APIConstants.VALUE_JSON)
                 .body(body)
                 .patch(baseUrl + "/users/me");
+
+        System.out.println();
 
         if (res.getStatusCode() == HttpStatus.SC_OK) {
             test.pass("User updated successfully");
@@ -123,35 +125,14 @@ public class ContactListTest {
         }
     }
 
-   /* @Test(priority = 5)
-    public void loginWithNewUser() {
-        test = extent.createTest("5. Login with Updated User");
-
-        String body = """
-        {
-          "%s": "mayurirao@fake.com",
-          "%s": "mayurirao"
-        }
-        """;
-
-        Response res = RestAssured.given()
-                .header(APIConstants.HEADER_CONTENT_TYPE, APIConstants.VALUE_JSON)
-                .body(body)
-                .post(baseUrl + "/users/login");
-
-        token = res.jsonPath().getString("token");
-        assertNotNull(token);
-        test.pass("Login successful with updated credentials");
-    }*/
-
     @Test(priority = 5)
     public void addContact() {
         test = extent.createTest("5. Add Contact");
 
-        String body = String.format( """
+        String body = String.format("""
         {
-          "%s": "John",
-          "%s": "Doe",
+          "%s": "Mayuri",
+          "%s": "Rao",
           "%s": "1970-01-01",
           "%s": "jdoe@fake.com",
           "%s": "8005555555",
@@ -162,11 +143,11 @@ public class ContactListTest {
           "%s": "12345",
           "%s": "USA"
         }
-        """, APIConstants.KEY_FIRST_NAME, APIConstants.KEY_LAST_NAME, APIConstants.KEY_BIRTHDATE, APIConstants.KEY_PHONE, APIConstants.KEY_STREET1
-        , APIConstants.KEY_STREET2, APIConstants.KEY_CITY, APIConstants.KEY_STATE, APIConstants.KEY_POSTAL_CODE, APIConstants.KEY_COUNTRY);
+        """,APIConstants.KEY_FIRST_NAME, APIConstants.KEY_LAST_NAME, APIConstants.KEY_BIRTHDATE,APIConstants.KEY_EMAIL, APIConstants.KEY_PHONE, APIConstants.KEY_STREET1
+        ,APIConstants.KEY_STREET2, APIConstants.KEY_CITY, APIConstants.KEY_STATE, APIConstants.KEY_POSTAL_CODE, APIConstants.KEY_COUNTRY);
 
         Response res = RestAssured.given()
-                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX +" " + token)
+                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX +token)
                 .header(APIConstants.HEADER_CONTENT_TYPE, APIConstants.VALUE_JSON)
                 .body(body)
                 .post(baseUrl + "/contacts");
@@ -187,7 +168,7 @@ public class ContactListTest {
         test = extent.createTest("6. Get Contact List");
 
         Response res = RestAssured.given()
-                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX +" " + token)
+                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX + token)
                 .get(baseUrl + "/contacts");
 
         if (res.getStatusCode() == HttpStatus.SC_OK) {
@@ -200,84 +181,96 @@ public class ContactListTest {
 
     @Test(priority = 7)
     public void getContactById() {
-        test = extent.createTest("8. Get Contact by ID");
+        test = extent.createTest("7. Get Contact by ID");
 
         Response res = RestAssured.given()
-                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX +" " + token)
+                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX + token)
                 .get(baseUrl + "/contacts/" + contactId);
 
         if (res.getStatusCode() == HttpStatus.SC_OK) {
-            test.pass("Contact List fetched");
+            assertEquals(res.jsonPath().getString("email"), "jdoe@fake.com");
+            test.pass("Contact fetched fetched");
         } else {
-            
+            test.fail("Expected status code 200 but got: " + res.getStatusCode());
+            assertEquals(res.getStatusCode(), HttpStatus.SC_OK);
         }
-        assertEquals(res.getStatusCode(), 200);
-        assertEquals(res.jsonPath().getString("email"), "jdoe@fake.com");
-        test.pass("Contact fetched successfully");
     }
 
     @Test(priority = 8)
     public void updateFullContact() {
-        test = extent.createTest("9. Update Full Contact");
+        test = extent.createTest("8. Update Full Contact");
 
-        String body = """
+        String body = String.format( """
         {
-          "firstName": "Amy",
-          "lastName": "Miller",
-          "birthdate": "1992-02-02",
-          "email": "amiller@fake.com",
-          "phone": "8005554242",
-          "street1": "13 School St.",
-          "street2": "Apt. 5",
-          "city": "Washington",
-          "stateProvince": "QC",
-          "postalCode": "A1A1A1",
-          "country": "Canada"
+          "%s": "Mayuri",
+          "%s": "Rao",
+          "%s": "1970-01-01",
+          "%s": "updatedemail@fake.com",
+          "%s": "8005555555",
+          "%s": "1 Main St.",
+          "%s": "Apartment A",
+          "%s": "Anytown",
+          "%s": "KS",
+          "%s": "12345",
+          "%s": "USA"
         }
-        """;
+         """,APIConstants.KEY_FIRST_NAME, APIConstants.KEY_LAST_NAME, APIConstants.KEY_BIRTHDATE,APIConstants.KEY_EMAIL, APIConstants.KEY_PHONE, APIConstants.KEY_STREET1
+                ,APIConstants.KEY_STREET2, APIConstants.KEY_CITY, APIConstants.KEY_STATE, APIConstants.KEY_POSTAL_CODE, APIConstants.KEY_COUNTRY);
 
         Response res = RestAssured.given()
-                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX +" " + token)
+                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX + token)
                 .header(APIConstants.HEADER_CONTENT_TYPE, APIConstants.VALUE_JSON)
                 .body(body)
                 .put(baseUrl + "/contacts/" + contactId);
 
-        assertEquals(res.getStatusCode(), 200);
-        assertEquals(res.jsonPath().getString("email"), "amiller@fake.com");
-        test.pass("Contact updated fully");
+        if (res.getStatusCode() == HttpStatus.SC_OK) {
+            assertEquals(res.jsonPath().getString("email"), "updatedemail@fake.com");
+            test.pass("Contact updated fully");
+        } else {
+            test.fail("Expected status code 200 but got: " + res.getStatusCode());
+            assertEquals(res.getStatusCode(), HttpStatus.SC_OK);
+        }
     }
 
     @Test(priority = 9)
     public void updatePartialContact() {
-        test = extent.createTest("10. Update Partial Contact");
+        test = extent.createTest("9. Update Partial Contact");
 
-        String body = """
+        String body = String.format( """
         {
-          "firstName": "Anna"
+          "%s": "Mayuri-Patch"
         }
-        """;
+        """,APIConstants.KEY_FIRST_NAME);
 
         Response res = RestAssured.given()
-                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX +" " + token)
+                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX + token)
                 .header(APIConstants.HEADER_CONTENT_TYPE, APIConstants.VALUE_JSON)
                 .body(body)
                 .patch(baseUrl + "/contacts/" + contactId);
 
-        assertEquals(res.getStatusCode(), 200);
-        assertEquals(res.jsonPath().getString("firstName"), "Anna");
-        test.pass("Contact updated partially (firstName only)");
+        if (res.getStatusCode() == HttpStatus.SC_OK) {
+            assertEquals(res.jsonPath().getString("firstName"), "Mayuri-Patch");
+            test.pass("Contact updated partially");
+        } else {
+            test.fail("Expected status code 200 but got: " + res.getStatusCode());
+            assertEquals(res.getStatusCode(), HttpStatus.SC_OK);
+        }
     }
 
     @Test(priority = 10)
     public void logoutUser() {
-        test = extent.createTest("11. Logout User");
+        test = extent.createTest("10. Logout User");
 
         Response res = RestAssured.given()
-                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX +" " + token)
+                .header(APIConstants.HEADER_AUTH, APIConstants.BEARER_PREFIX + token)
                 .post(baseUrl + "/users/logout");
 
-        assertEquals(res.getStatusCode(), 200);
-        test.pass("User logged out");
+        if (res.getStatusCode() == HttpStatus.SC_OK) {
+            test.pass("User logged out");
+        } else {
+            test.fail("Expected status code 200 but got: " + res.getStatusCode());
+            assertEquals(res.getStatusCode(), HttpStatus.SC_OK);
+        }
     }
 
     @AfterSuite

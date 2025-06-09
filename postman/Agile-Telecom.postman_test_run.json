@@ -1,0 +1,338 @@
+{
+	"id": "8851e41f-250d-41a5-b892-0e1811ecfb8e",
+	"name": "Agile-Telecom",
+	"timestamp": "2025-06-09T10:30:48.366Z",
+	"collection_id": "29729471-bc8cf9aa-5e91-4f9c-938e-0b6c84a4b17e",
+	"folder_id": 0,
+	"environment_id": "29729471-1deb0e65-5d5e-4d49-a541-059494a3f866",
+	"totalPass": 11,
+	"delay": "50",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-06-09T10:30:42.285Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "4c2b53b5-9a88-461f-9f59-46d9042bbdf6",
+			"name": "Add New User",
+			"url": "https://thinking-tester-contact-list.herokuapp.com/users",
+			"time": 303,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				303
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "b2566600-cc53-485b-b6c1-be2ecfd812c1",
+			"name": "Get User Profile",
+			"url": "https://thinking-tester-contact-list.herokuapp.com/users/me",
+			"time": 253,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				253
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c1519618-ddcb-4f32-b0c9-bbb702d4d818",
+			"name": "Update User",
+			"url": "https://thinking-tester-contact-list.herokuapp.com/users/me",
+			"time": 481,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				481
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "317d7f74-a6cd-4809-9398-701d6e2f9013",
+			"name": "Login User",
+			"url": "https://thinking-tester-contact-list.herokuapp.com/users/login",
+			"time": 591,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				591
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "fcd814c3-200c-42c2-96fb-375f39427232",
+			"name": "Add Contact",
+			"url": "https://thinking-tester-contact-list.herokuapp.com/contacts",
+			"time": 296,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				296
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "4f8e0373-89d7-4e91-a328-c8a03f3e8f9c",
+			"name": "Get Contact List",
+			"url": "https://thinking-tester-contact-list.herokuapp.com/contacts",
+			"time": 487,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				487
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "1a71871b-b957-476f-8d98-bc1989b75648",
+			"name": "Get Contact",
+			"url": "https://thinking-tester-contact-list.herokuapp.com/contacts/6846b7d51f946b001512c444",
+			"time": 548,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				548
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c90bcc6c-2e89-4ca1-9152-8b786f9a9ce8",
+			"name": "Update Contact",
+			"url": "https://thinking-tester-contact-list.herokuapp.com/contacts/6846b7d51f946b001512c444",
+			"time": 547,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has Updated Email": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has Updated Email": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				547
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has Updated Email": true
+				}
+			]
+		},
+		{
+			"id": "39321d9c-da22-449d-af99-f87166a0c593",
+			"name": "Update Contact Patch",
+			"url": "https://thinking-tester-contact-list.herokuapp.com/contacts/6846b7d51f946b001512c444",
+			"time": 543,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				543
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "4c72e5cb-1ad1-4db8-9d9b-de9f9aa57703",
+			"name": "Logout User",
+			"url": "https://thinking-tester-contact-list.herokuapp.com/users/logout",
+			"time": 548,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				548
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 4597,
+	"collection": {
+		"requests": [
+			{
+				"id": "4c2b53b5-9a88-461f-9f59-46d9042bbdf6",
+				"method": "POST"
+			},
+			{
+				"id": "b2566600-cc53-485b-b6c1-be2ecfd812c1",
+				"method": "GET"
+			},
+			{
+				"id": "c1519618-ddcb-4f32-b0c9-bbb702d4d818",
+				"method": "PATCH"
+			},
+			{
+				"id": "317d7f74-a6cd-4809-9398-701d6e2f9013",
+				"method": "POST"
+			},
+			{
+				"id": "fcd814c3-200c-42c2-96fb-375f39427232",
+				"method": "POST"
+			},
+			{
+				"id": "4f8e0373-89d7-4e91-a328-c8a03f3e8f9c",
+				"method": "GET"
+			},
+			{
+				"id": "1a71871b-b957-476f-8d98-bc1989b75648",
+				"method": "GET"
+			},
+			{
+				"id": "c90bcc6c-2e89-4ca1-9152-8b786f9a9ce8",
+				"method": "PUT"
+			},
+			{
+				"id": "39321d9c-da22-449d-af99-f87166a0c593",
+				"method": "PATCH"
+			},
+			{
+				"id": "4c72e5cb-1ad1-4db8-9d9b-de9f9aa57703",
+				"method": "POST"
+			}
+		]
+	}
+}
